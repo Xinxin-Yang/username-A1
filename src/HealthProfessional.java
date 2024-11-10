@@ -1,5 +1,3 @@
-import java.util.List;
-
 public class HealthProfessional {
     
     // 实例变量
@@ -8,9 +6,8 @@ public class HealthProfessional {
     private String description; // 评价
     private String qualification;// 资格认证
     private int yearsOfExperience;// 工作经验
-    private String profession;    // 专业领域
     private String contactInfo;   // 联系方式
-    private List<String> availableTimes;// 可预约时间
+    private String availableTimes;// 可预约时间
     private double serviceFee;    // 服务费用
     private String employmentStatus;// 雇佣状态
 
@@ -22,20 +19,18 @@ public class HealthProfessional {
         this.description = "None";
         this.qualification = "None";
         this.yearsOfExperience = 0;
-        this.profession = "None";
         this.contactInfo = "None";
         this.serviceFee = 0.0;
         this.employmentStatus = "Full-time";
     }
 
      // 带参数的构造函数
-     public HealthProfessional(int id, String name, String description, String qualification, int yearsOfExperience, String profession, String contactInfo, List<String> availableTimes, double serviceFee, String employmentStatus){
+     public HealthProfessional(int id, String name, String description, String qualification, int yearsOfExperience, String contactInfo, String availableTimes, double serviceFee, String employmentStatus){
         this.id = id;
         this.name = name;
         this.description = description;
         this.qualification = qualification;
         this.yearsOfExperience = yearsOfExperience;
-        this.profession = profession;
         this.contactInfo = contactInfo;
         this.availableTimes = availableTimes;
         this.serviceFee = serviceFee;
@@ -49,7 +44,6 @@ public class HealthProfessional {
         System.out.println("Description: "+ description);
         System.out.println("Qualification: " + qualification);
         System.out.println("Years of Experience: " + yearsOfExperience);
-        System.out.println("Profession: " + profession);
         System.out.println("Contact Info: " + contactInfo);
         System.out.println("Available Times: " + availableTimes);
         System.out.println("Service Fee: " + serviceFee);
@@ -97,14 +91,6 @@ public class HealthProfessional {
         return yearsOfExperience;
     }
 
-    public void setProfession(String profession) {
-        this.profession = profession;
-    }
-
-    public String getProfession() {
-        return profession;
-    }
-
     public void setContactInfo(String contactInfo) {
         this.contactInfo = contactInfo;
     }
@@ -113,11 +99,11 @@ public class HealthProfessional {
         return contactInfo;
     }
 
-    public void setAvailableTimes(List<String> availableTimes) {
+    public void setAvailableTimes(String availableTimes) {
         this.availableTimes = availableTimes;
     }
 
-    public List<String> getAvailableTimes() {
+    public String getAvailableTimes() {
         return availableTimes;
     }
 
