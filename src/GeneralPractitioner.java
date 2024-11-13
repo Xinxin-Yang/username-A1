@@ -30,6 +30,7 @@ public class GeneralPractitioner extends HealthProfessional {
         this.specialty = specialty;
     }
 
+    @Override
     public String getSpecialty() {
         return specialty;
     }

@@ -16,11 +16,12 @@ public class Main {
         gp2.setSpecialty("Internal medicine");
         gp3.setSpecialty("Be good at all");
 
-        nutritionist1.setDietPlans("Balanced diet plan");
+        nutritionist1.setSpecialty("Balanced diet plan");
         nutritionist1.setHealthPhilosophy("Overall health priority");
-        nutritionist2.setDietPlans("High protein diet plan");
+        nutritionist2.setSpecialty("High protein diet plan");
         nutritionist2.setHealthPhilosophy("Sustainability and long-term management");
 
+        Appointment appointment1 = new Appointment("Alice", "1234567890", "10:00", nutritionist1);
 
         // 打印每个医疗专业人员的详细信息
         gp1.prirntDetails();
@@ -32,6 +33,8 @@ public class Main {
         nutritionist1.prirntDetails();
         System.out.println("------------------------------");
         nutritionist2.prirntDetails();
+        System.out.println("------------------------------");
+        appointment1.displayAppointmentDetails();
     }
 
 }

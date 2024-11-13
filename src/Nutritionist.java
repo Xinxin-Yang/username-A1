@@ -1,13 +1,13 @@
 public class Nutritionist extends HealthProfessional {
     static String practitionerType;
-    private String dietPlans; // 饮食计划类型
+    private String specialty; // 饮食计划类型
     private String healthPhilosophy; // 健康管理理念
 
     // 默认构造函数
     public Nutritionist() {
         super();  // 调用父类的默认构造函数
         Nutritionist.practitionerType = "Nutritionist";
-        this.dietPlans = "Balanced diet plan";
+        this.specialty = "Balanced diet plan";
         this.healthPhilosophy = "Overall health priority";
     }
     
@@ -15,7 +15,7 @@ public class Nutritionist extends HealthProfessional {
     public Nutritionist(int id, String name, String description, String qualification, int yearsOfExperience, String contactInfo, String availableTimes,double serviceFee,String employmentStatus) {
         super(id, name, description, qualification, yearsOfExperience, contactInfo, availableTimes,serviceFee, employmentStatus);
         Nutritionist.practitionerType = "Nutritionist";
-        this.dietPlans = "Balanced diet plan"; 
+        this.specialty = "Balanced diet plan"; 
         this.healthPhilosophy = "Overall health priority";
     }
     
@@ -25,16 +25,17 @@ public class Nutritionist extends HealthProfessional {
         System.out.println("Details of health professionals are as follows:");
         super.prirntDetails();  // 调用父类的方法打印基本信息
         System.out.println("Types of health professionals: " + practitionerType);
-        System.out.println("Type of meal plan: " + dietPlans);
+        System.out.println("Type of meal plan: " + specialty);
         System.out.println("Health management concept: " + healthPhilosophy);  // 打印饮食计划类型和健康管理理念
     }
 
-    public void setDietPlans(String dietPlans) {
-        this.dietPlans = dietPlans;
+    public void setSpecialty(String specialty) {
+        this.specialty = specialty;
     }
 
-    public String getDietPlans() {
-        return dietPlans;
+    @Override
+    public String getSpecialty() {
+        return specialty;
     }
 
     public void setHealthPhilosophy(String healthPhilosophy) {
@@ -42,7 +43,7 @@ public class Nutritionist extends HealthProfessional {
     }
 
     public String getHealthPhilosophy() {
-        return dietPlans;
+        return healthPhilosophy;
     }
 
     public void setPractitionerType(String practitionerType) {

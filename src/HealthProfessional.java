@@ -1,4 +1,4 @@
-public class HealthProfessional {
+public abstract class HealthProfessional {
     
     // 实例变量
     private int id;             // 健康专业人员的ID
@@ -122,4 +122,6 @@ public class HealthProfessional {
     public String getEmploymentStatus() {
         return employmentStatus;
     }
+
+    public abstract String getSpecialty();
 }
