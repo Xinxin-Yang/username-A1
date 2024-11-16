@@ -1,4 +1,57 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+
 public class Main {
+        // 第 5 部分 - 预约的收集
+        private static final ArrayList<Appointment> appointmentList = new ArrayList<>();
+
+        // 创建新的预约并将其添加到预约列表
+        public static void createAppointment(String patientName, String patientPhone, String preferredTime, HealthProfessional healthProfessional) {
+            if (patientName.isEmpty() || patientPhone.isEmpty() || preferredTime.isEmpty()) {
+                System.out.println("无法创建预约：信息不完整。");
+                return;
+            }
+            
+            Appointment newAppointment = new Appointment(patientName, patientPhone, preferredTime, healthProfessional);
+            appointmentList.add(newAppointment);
+            System.out.println("预约已成功创建！");
+        }
+    
+        // 打印现有预约
+        public static void printExistingAppointments() {
+            if (appointmentList.isEmpty()) {
+                System.out.println("当前没有预约。");
+                return;
+            }
+    
+            System.out.println("现有预约：");
+            for (Appointment appointment : appointmentList) {
+                appointment.displayAppointmentDetails();
+                System.out.println("------------------------------");
+            }
+        }
+    
+        // 取消预约，通过患者手机号码来查找并删除
+        public static void cancelBooking(String patientPhone) {
+            Iterator<Appointment> iterator = appointmentList.iterator();
+            boolean found = false;
+    
+            while (iterator.hasNext()) {
+                Appointment appointment = iterator.next();
+                if (appointment.getPatientPhone().equals(patientPhone)) {
+                    iterator.remove();
+                    System.out.println("预约已成功取消。");
+                    found = true;
+                    break;
+                }
+            }
+    
+            if (!found) {
+                System.out.println("未找到此手机号码的预约。");
+            }
+        }
+    
+           
     public static void main(String[] args) {
         // 创建三个全科医生对象
         GeneralPractitioner gp1 = new GeneralPractitioner(1, "Dr. Smith", "General practitioner with experience in family care", "MD", 10, "123-456-7890", "9:00 AM - 5:00 PM", 150.0, "Full-time");
@@ -21,8 +74,7 @@ public class Main {
         nutritionist2.setSpecialty("High protein diet plan");
         nutritionist2.setHealthPhilosophy("Sustainability and long-term management");
 
-        Appointment appointment1 = new Appointment("Alice", "1234567890", "10:00", nutritionist1);
-
+        
         // 打印每个医疗专业人员的详细信息
         gp1.prirntDetails();
         System.out.println("------------------------------");
@@ -34,7 +86,25 @@ public class Main {
         System.out.println("------------------------------");
         nutritionist2.prirntDetails();
         System.out.println("------------------------------");
-        appointment1.displayAppointmentDetails();
-    }
 
+        // 第 5 部分 - 预约的收集
+        // 预约两次全科医生
+        createAppointment("Alice", "1234567890", "10:00", gp1);
+        createAppointment("Bob", "0987654321", "14:30", gp2);
+
+        // 预约另外两位专科医生
+        createAppointment("Charlie", "1122334455", "11:00", nutritionist1);
+        createAppointment("David", "5566778899", "15:00", nutritionist2);
+
+        // 打印现有预约
+        printExistingAppointments();
+        System.out.println("------------------------------");
+
+        // 取消某个预约
+        cancelBooking("1122334455"); // 取消 Charlie 的预约
+        System.out.println("------------------------------");
+
+        // 打印更新后的预约
+        printExistingAppointments();
+    }
 }
