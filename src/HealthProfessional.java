@@ -1,18 +1,18 @@
 public abstract class HealthProfessional {
     
-    // 实例变量
-    private int id;             // 健康专业人员的ID
-    private String name;        // 姓名
-    private String description; // 评价
-    private String qualification;// 资格认证
-    private int yearsOfExperience;// 工作经验
-    private String contactInfo;   // 联系方式
-    private String availableTimes;// 可预约时间
-    private double serviceFee;    // 服务费用
-    private String employmentStatus;// 雇佣状态
+    // Instance variable
+    private int id;             // ID of the health professional
+    private String name;        // name
+    private String description; // evaluate
+    private String qualification;// Qualification certification
+    private int yearsOfExperience;// Work experience
+    private String contactInfo;   // Contact information
+    private String availableTimes;// Available time
+    private double serviceFee;    // Service charge
+    private String employmentStatus;// Employment status
 
 
-    // 默认构造函数
+    // Default constructor
     public HealthProfessional() {
         this.id = 0;
         this.name = "None";
@@ -24,7 +24,7 @@ public abstract class HealthProfessional {
         this.employmentStatus = "Full-time";
     }
 
-     // 带参数的构造函数
+     // A constructor with arguments
      public HealthProfessional(int id, String name, String description, String qualification, int yearsOfExperience, String contactInfo, String availableTimes, double serviceFee, String employmentStatus){
         this.id = id;
         this.name = name;
@@ -37,7 +37,7 @@ public abstract class HealthProfessional {
         this.employmentStatus = employmentStatus;
     }
     
-    // 打印实例变量的详细信息
+    // Print details of the instance variable
     public void prirntDetails() {
         System.out.println("ID: "+ id);
         System.out.println("Name: "+ name);
@@ -50,7 +50,7 @@ public abstract class HealthProfessional {
         System.out.println("Employment Status: " + employmentStatus);
     }
 
-    // Getter 和 Setter 方法
+    // Getter and Setter methods
     public void setID(int id) {
         this.id = id;
     }

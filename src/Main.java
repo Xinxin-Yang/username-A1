@@ -2,65 +2,69 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Main {
-        // 第 5 部分 - 预约的收集
+        // Part 5 - Collection of appointments
         private static final ArrayList<Appointment> appointmentList = new ArrayList<>();
 
-        // 创建新的预约并将其添加到预约列表
+        // Create a new appointment and add it to the appointment list
         public static void createAppointment(String patientName, String patientPhone, String preferredTime, HealthProfessional healthProfessional) {
             if (patientName.isEmpty() || patientPhone.isEmpty() || preferredTime.isEmpty()) {
-                System.out.println("无法创建预约：信息不完整。");
-                return;
+                System.out.println("Unable to create a reservation: The information is incomplete.");
             }
             
-            Appointment newAppointment = new Appointment(patientName, patientPhone, preferredTime, healthProfessional);
-            appointmentList.add(newAppointment);
-            System.out.println("预约已成功创建！");
+            else {
+                Appointment newAppointment = new Appointment(patientName, patientPhone, preferredTime, healthProfessional);
+                appointmentList.add(newAppointment);
+                System.out.println("Reservation created successfully!");
+            }
         }
     
-        // 打印现有预约
+        // Print existing appointment
         public static void printExistingAppointments() {
             if (appointmentList.isEmpty()) {
-                System.out.println("当前没有预约。");
-                return;
+                System.out.println("There is no appointment at the moment.");
             }
     
-            System.out.println("现有预约：");
-            for (Appointment appointment : appointmentList) {
-                appointment.displayAppointmentDetails();
-                System.out.println("------------------------------");
+            else {
+                System.out.println("Existing appointment：");
+                for (Appointment appointment : appointmentList) {
+                    appointment.displayAppointmentDetails();
+                    System.out.println("------------------------------");
+                }
             }
         }
     
-        // 取消预约，通过患者手机号码来查找并删除
+        //Cancel the appointment, find and delete it by the patient's cell phone number
         public static void cancelBooking(String patientPhone) {
-            Iterator<Appointment> iterator = appointmentList.iterator();
-            boolean found = false;
+            if (appointmentList.isEmpty()) {
+                System.out.println("There is no appointment at the moment.");
+            }
+
+            if (patientPhone.isEmpty()) {
+                System.out.println("Unable to cancel: Mobile number does not exist.");
+            }
+
+            Iterator<Appointment> iterator = appointmentList.iterator();  //Introduce interfaces that traverse the elements of a collection sequentially
     
             while (iterator.hasNext()) {
                 Appointment appointment = iterator.next();
                 if (appointment.getPatientPhone().equals(patientPhone)) {
                     iterator.remove();
-                    System.out.println("预约已成功取消。");
-                    found = true;
+                    System.out.println("The reservation has been successfully cancelled.");
                     break;
                 }
-            }
-    
-            if (!found) {
-                System.out.println("未找到此手机号码的预约。");
-            }
+            }      
         }
     
            
     public static void main(String[] args) {
-        // 创建三个全科医生对象
-        GeneralPractitioner gp1 = new GeneralPractitioner(1, "Dr. Smith", "General practitioner with experience in family care", "MD", 10, "123-456-7890", "9:00 AM - 5:00 PM", 150.0, "Full-time");
-        GeneralPractitioner gp2 = new GeneralPractitioner(2, "Dr. Johnson", "General practitioner specializing in pediatrics", "MD", 8, "987-654-3210", "10:00 AM - 4:00 PM", 160.0, "Full-time");
-        GeneralPractitioner gp3 = new GeneralPractitioner(3, "Dr. Lee", "General practitioner with expertise in geriatrics", "MD", 12, "555-123-4567", "9:00 AM - 6:00 PM", 170.0, "Part-time");
+        // Create three general practitioner objects
+        GeneralPractitioner gp1 = new GeneralPractitioner(1, "Dr. William", "The general practitioner specializes in paediatrics.", "MD", 11, "156-345-3620", "9:00 AM - 5:00 PM", 200.0, "Full-time");
+        GeneralPractitioner gp2 = new GeneralPractitioner(2, "Dr. James", "The general practitioner has experience in home care.", "MD", 9, "193-376-9270", "8:00 AM - 4:00 PM", 240.0, "Freelance");
+        GeneralPractitioner gp3 = new GeneralPractitioner(3, "Dr. Johnson", "The general practitioner's expertise in gerontology is extensive.", "MD", 10, "197-886-3647", "10:00 AM - 7:00 PM", 190.0, "Part-time");
 
-        // 创建两个营养师对象
-        Nutritionist nutritionist1 = new Nutritionist(4, "Alice Wang", "Nutritionist with focus on plant-based diets", "MSc in Nutrition", 5, "555-234-5678", "9:00 AM - 4:00 PM", 120.0, "Freelance");
-        Nutritionist nutritionist2 = new Nutritionist(5, "Bob Zhang", "Nutritionist specializing in sports nutrition", "BSc in Nutrition", 6, "555-345-6789", "11:00 AM - 5:00 PM", 130.0, "Full-time");
+        // Create two dietitian objects
+        Nutritionist nutritionist1 = new Nutritionist(4, "Michael Davis", "The dietitian focuses on plant-based diets.", "MSc in Nutrition", 7, "188-666-7778", "9:00 AM - 5:00 PM", 230.0, "Freelance");
+        Nutritionist nutritionist2 = new Nutritionist(5, "Charlotte King", "The dietitian specializes in sports nutrition.", "BSc in Nutrition", 9, "133-678-9274", "11:00 AM - 6:00 PM", 170.0, "Part-time");
 
         GeneralPractitioner.practitionerType = "general practitioner";
         Nutritionist.practitionerType = "Nutritionist";
@@ -75,7 +79,7 @@ public class Main {
         nutritionist2.setHealthPhilosophy("Sustainability and long-term management");
 
         
-        // 打印每个医疗专业人员的详细信息
+        // Print details for each medical professional
         gp1.prirntDetails();
         System.out.println("------------------------------");
         gp2.prirntDetails();
@@ -87,24 +91,24 @@ public class Main {
         nutritionist2.prirntDetails();
         System.out.println("------------------------------");
 
-        // 第 5 部分 - 预约的收集
-        // 预约两次全科医生
-        createAppointment("Alice", "1234567890", "10:00", gp1);
-        createAppointment("Bob", "0987654321", "14:30", gp2);
+        // Part 5 - Collection of appointments
+        // Make two GP appointments
+        createAppointment("Charlotte King", "1772554789", "9:00", gp1);
+        createAppointment("Daniel Robinson", "2996346188", "14:30", gp2);
 
-        // 预约另外两位专科医生
-        createAppointment("Charlie", "1122334455", "11:00", nutritionist1);
-        createAppointment("David", "5566778899", "15:00", nutritionist2);
+        // Make an appointment with two other specialists
+        createAppointment("Olivia Carter", "3682972567", "10:00", nutritionist1);
+        createAppointment("Grace Walker", "4678352259", "17:00", nutritionist2);
 
-        // 打印现有预约
+        // Print existing appointment
         printExistingAppointments();
         System.out.println("------------------------------");
 
-        // 取消某个预约
-        cancelBooking("1122334455"); // 取消 Charlie 的预约
+        // Cancel an appointment
+        cancelBooking("3682972567"); // Cancel Charlie's appointment
         System.out.println("------------------------------");
 
-        // 打印更新后的预约
+        // Print the updated appointment
         printExistingAppointments();
     }
 }

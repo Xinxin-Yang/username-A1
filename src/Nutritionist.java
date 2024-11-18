@@ -1,17 +1,17 @@
 public class Nutritionist extends HealthProfessional {
     static String practitionerType;
-    private String specialty; // 饮食计划类型
-    private String healthPhilosophy; // 健康管理理念
+    private String specialty; // Type of meal plan
+    private String healthPhilosophy; // Health management concept
 
-    // 默认构造函数
+    //Default constructor
     public Nutritionist() {
-        super();  // 调用父类的默认构造函数
+        super();  
         Nutritionist.practitionerType = "Nutritionist";
         this.specialty = "Balanced diet plan";
         this.healthPhilosophy = "Overall health priority";
     }
     
-    // 带参构造函数
+    // Parameterized constructor
     public Nutritionist(int id, String name, String description, String qualification, int yearsOfExperience, String contactInfo, String availableTimes,double serviceFee,String employmentStatus) {
         super(id, name, description, qualification, yearsOfExperience, contactInfo, availableTimes,serviceFee, employmentStatus);
         Nutritionist.practitionerType = "Nutritionist";
@@ -19,14 +19,14 @@ public class Nutritionist extends HealthProfessional {
         this.healthPhilosophy = "Overall health priority";
     }
     
-    // 打印营养师的详细信息
+    // Print details of dietitians
     @Override
     public void prirntDetails() {
         System.out.println("Details of health professionals are as follows:");
-        super.prirntDetails();  // 调用父类的方法打印基本信息
+        super.prirntDetails();  // Calls the methods of the parent class to print basic information
         System.out.println("Types of health professionals: " + practitionerType);
         System.out.println("Type of meal plan: " + specialty);
-        System.out.println("Health management concept: " + healthPhilosophy);  // 打印饮食计划类型和健康管理理念
+        System.out.println("Health management concept: " + healthPhilosophy);  // Print meal plan types and health management ideas
     }
 
     public void setSpecialty(String specialty) {

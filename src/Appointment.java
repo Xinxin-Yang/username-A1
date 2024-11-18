@@ -1,18 +1,17 @@
 public class Appointment {
     private String patientName;
     private String patientPhone;
-    private String preferredTime;  // 例如08:00、10:00、14:30
-    private HealthProfessional healthProfessional;  // 使用Doctor类或其子类
-
-    // 默认构造函数
+    private String preferredTime;  //For example, 08:00, 10:00, and 14:30
+    private HealthProfessional healthProfessional;  // Use the Doctor class or its subclasses
+    // Default constructor
     public Appointment() {
-        this.patientName = "Unknown";
-        this.patientPhone = "Unknown";
+        this.patientName = "None";
+        this.patientPhone = "None";
         this.preferredTime = "08:00";
-        this.healthProfessional = new GeneralPractitioner();  // 默认选择全科医生
+        this.healthProfessional = new GeneralPractitioner();  // General practitioner is selected by default
     }
 
-    // 带参数的构造函数
+    // A constructor with arguments
     public Appointment(String patientName, String patientPhone, String preferredTime, HealthProfessional healthProfessional) {
         this.patientName = patientName;
         this.patientPhone = patientPhone;
@@ -20,7 +19,7 @@ public class Appointment {
         this.healthProfessional = healthProfessional;
     }
 
-    // Getter 和 Setter 方法
+    // Getter and Setter methods
     public void setPatientName(String patientName) {
         this.patientName = patientName;
     }
@@ -54,7 +53,7 @@ public class Appointment {
     }
 
 
-    // 输出预约信息
+    // Outputting reservation information
     public void displayAppointmentDetails() {
         System.out.println("Patient Name: " + patientName);
         System.out.println("Phone: " + patientPhone);
