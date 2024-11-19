@@ -15,6 +15,7 @@ public class Main {
                 Appointment newAppointment = new Appointment(patientName, patientPhone, preferredTime, healthProfessional);
                 appointmentList.add(newAppointment);
                 System.out.println("Reservation created successfully!");
+                System.out.println("------------------------------");
             }
         }
     
@@ -25,7 +26,7 @@ public class Main {
             }
     
             else {
-                System.out.println("Existing appointment：");
+                System.out.println("Existing appointment:");
                 for (Appointment appointment : appointmentList) {
                     appointment.displayAppointmentDetails();
                     System.out.println("------------------------------");
